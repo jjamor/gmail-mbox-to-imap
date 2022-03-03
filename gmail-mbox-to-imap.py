@@ -163,8 +163,8 @@ class Progress():
         sbj = self.decode_subject(msg["subject"] or "")
         label = self.decode_subject(msg["x-gmail-labels"] or "")
         label = re.sub(r"&", "y", label)
-        label = re.sub(r"Recibidos", "INBOX", label)
-        label = re.sub(r"Enviados", "Sent", label)
+#        label = re.sub(r"Recibidos", "INBOX", label)
+#        label = re.sub(r"Enviados", "Sent", label)
         label = re.sub(r" ", "_", label)
         label = re.sub(r"__+", "_", label)
         label = re.sub(r"\"", "", label)
@@ -189,7 +189,7 @@ class Progress():
 
         msg.box = []
         if len(labels) != 0:
-            if labels.count('Borradores'):
+            if labels.count('Drafts'):
                 msg.box = ['Drafts']
             else:
                 if labels.count('Spam'):
